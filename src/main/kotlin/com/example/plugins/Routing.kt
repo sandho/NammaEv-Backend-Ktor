@@ -1,6 +1,5 @@
 package com.example.plugins
 
-import com.example.db.DBClient
 import io.ktor.server.routing.*
 import io.ktor.http.*
 import io.ktor.server.plugins.statuspages.*
@@ -60,24 +59,7 @@ fun Application.configureRouting() {
             call.respond(report)
         }
         post("check") {
-            val dbClient = DBClient()
 
-            dbClient.create(
-                User(
-                    "1",
-                    "I'm the User",
-                    "NammaEv Pro",
-                    60.0,
-                    2,
-                    54.0,
-                    40.0,
-                    40.3
-                )
-            ).let {
-                user ->
-                call.respond("stored successfully")
-                call.respond(HttpStatusCode.Created)
-            } ?: call.respond(HttpStatusCode.BadRequest)
         }
     }
 }

@@ -11,8 +11,10 @@ plugins {
 
 group = "com.example"
 version = "0.0.1"
+
 application {
     mainClass.set("com.example.ApplicationKt")
+
 
     val isDevelopment: Boolean = project.ext.has("development")
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
@@ -42,6 +44,7 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:$logback_version")
     testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+    implementation("com.github.jsimone:webapp-runner:8.5.11.3")
 
     // mongodb
     implementation("org.litote.kmongo:kmongo:4.2.8")
